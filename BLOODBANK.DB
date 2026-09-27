@@ -1,0 +1,181 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: May 28, 2024 at 06:40 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.1.25
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `bloodbankdb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `username` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`username`, `password`) VALUES
+('ADMIN', 'ADMIN123');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blood_donation`
+--
+
+CREATE TABLE `blood_donation` (
+  `donation_id` varchar(100) NOT NULL,
+  `donor_id` varchar(100) NOT NULL,
+  `unit` int(100) NOT NULL,
+  `request_date` date NOT NULL,
+  `blood_type` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `action` varchar(100) NOT NULL,
+  `admin_id` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `blood_donation`
+--
+
+INSERT INTO `blood_donation` (`donation_id`, `donor_id`, `unit`, `request_date`, `blood_type`, `status`, `action`, `admin_id`) VALUES
+('6655eb4b6d871', 'RASHIKA', 2, '2024-05-28', '0', 'pending', 'none', '1'),
+('6655eb955436f', 'RASHIKA', 2, '2024-05-28', '0', 'pending', 'none', '1'),
+('6655ebb6dc1d6', 'RASHIKA', 2, '2024-05-28', '0', 'pending', 'none', '1'),
+('6655f43e70065', 'VANITHA', 2, '2024-05-28', '', 'pending', 'none', '1'),
+('6655f570e9058', 'RASHIKA', 1, '2024-05-28', '', 'pending', 'none', '1'),
+('6655f8d1a1869', 'RASHIKA', 2, '2024-05-28', '', 'pending', 'none', '1'),
+('6655f918a92a8', 'RASHIKA', 2, '2024-05-28', '', 'pending', 'none', '1'),
+('6655f91d13a62', 'RASHIKA', 2, '2024-05-28', '', 'pending', 'none', '1'),
+('6655faf73837c', 'RASHIKA', 1, '2024-05-28', '', 'pending', 'none', '1'),
+('6655fbe5b288d', 'RASHIKA', 3, '2024-05-28', '', 'pending', 'none', '1'),
+('6655fe0361575', 'RASHIKA', 1, '2024-05-28', '', 'pending', 'none', '1'),
+('6655fe7fdcd02', 'RASHIKA', 1, '2024-05-28', 'A+', 'pending', 'none', '1'),
+('6655fe893e8d8', 'RASHIKA', 2, '2024-05-28', 'A+', 'pending', 'none', '1'),
+('6655fede5a712', 'RASHIKA', 2, '2024-05-28', 'A+', 'pending', 'none', '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blood_request`
+--
+
+CREATE TABLE `blood_request` (
+  `request_id` varchar(100) NOT NULL,
+  `requestor_id` varchar(100) NOT NULL,
+  `unit` int(100) NOT NULL,
+  `request_date` date NOT NULL,
+  `reasons` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `action` varchar(100) NOT NULL,
+  `admin_id` varchar(100) NOT NULL,
+  `blood_type` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `blood_request`
+--
+
+INSERT INTO `blood_request` (`request_id`, `requestor_id`, `unit`, `request_date`, `reasons`, `status`, `action`, `admin_id`, `blood_type`) VALUES
+('665586e2675c4', 'VANITHA', 3, '2024-05-28', '', 'pending', 'none', '1', ' group'),
+('665587c2bc0fd', 'VANITHA', 3, '2024-05-28', 'FEVER', 'pending', 'none', '1', ' group'),
+('665588100a718', 'VANITHA', 3, '2024-05-28', 'FEVER', 'pending', 'none', '1', ''),
+('66558a6c9143f', 'anusha', 3, '2024-05-28', 'FEVER', 'pending', 'none', '1', ''),
+('66558a971e6bd', 'anusha', 3, '2024-05-28', 'FEVER', 'pending', 'none', '1', 'A+'),
+('66558aab8ddb0', 'anusha', 2, '2024-05-28', 'dengue', 'pending', 'none', '1', 'O+'),
+('6655a8a81f94f', 'RASHIKA', 2, '2024-05-28', 'FEVER', 'pending', 'none', '1', 'A+'),
+('6655ec7cf250d', 'RASHIKA', 2, '2024-05-28', 'fever', 'pending', 'none', '1', 'A+'),
+('6655faa331991', 'RASHIKA', 1, '2024-05-28', 'dengue', 'pending', 'none', '1', 'A+');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `blood_stock`
+--
+
+CREATE TABLE `blood_stock` (
+  `blood_type` varchar(100) NOT NULL,
+  `unit` int(100) NOT NULL,
+  `admin_id` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `blood_stock`
+--
+
+INSERT INTO `blood_stock` (`blood_type`, `unit`, `admin_id`) VALUES
+('A+', 8, 'AD123'),
+('A-', 8, 'AD232'),
+('AB+', 3, 'AD454'),
+('AB-', 6, 'AD343'),
+('O+', 7, 'AB767'),
+('O-', 10, 'AD666'),
+('B+', 5, 'AD310'),
+('B-', 6, 'AD300');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `userid` varchar(100) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `phone_number` int(100) NOT NULL,
+  `gender` varchar(100) NOT NULL,
+  `blood_type` varchar(100) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  `age` int(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`userid`, `first_name`, `last_name`, `phone_number`, `gender`, `blood_type`, `password`, `age`) VALUES
+('VANITHA', 'VANITHA', 'K', 2147483647, 'f', 'A+', '$2y$10$WVoWbkTt2.pRpufk6uhaaevRCyyD1Xa2zHaVXgMzkCaWlICjUxLbK', 21),
+('anusha', 'anusha', 'R', 2147483647, 'f', 'A-', '$2y$10$xtJejrRyFBhY.MVuYP3FiOSwzmvbca7js94qk7efVKUt2XGD/Fe7G', 20),
+('RASHIKA', 'RASHIKA', 'B', 2147483647, 'f', 'A+', '$2y$10$vWu9r4.cKFINDI.KWg.XGuA8.F9JTHu4Bjs6Ma/5yqOxi3UQgnUiS', 21);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `Username` varchar(100) NOT NULL,
+  `Email` varchar(100) NOT NULL,
+  `Contact` int(100) NOT NULL,
+  `Address` varchar(100) NOT NULL,
+  `Message` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
